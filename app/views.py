@@ -44,7 +44,7 @@ def getPost(request, post_id, *args, **kwargs):
 
         data["status"] = 200
         data["message"] = "Post found successfully!"
-        data["author"] = postObj.author
+        data["author"] = postObj.author.username
         data["content"] = postObj.content
         data["date"] = postObj.date
     except Exception as e:
