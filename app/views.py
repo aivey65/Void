@@ -18,7 +18,20 @@ def signupView():
 
 @login_required
 def feedView(request):
-    pass
+    queryPosts = Post.objects.all()
+    print(queryPosts)
+    postList = [{
+        "id": x.id, 
+        "author": {
+            "username": x.author.username, 
+            "email": x.author.email,
+        },
+        "title": x.title, 
+        "content": x.content, 
+        "date": x.date
+    } for x in queryPosts]
+
+    return JsonResponse({"data": postList})
 
 @login_required
 def profileView(request):
